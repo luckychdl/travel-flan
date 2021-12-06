@@ -55,7 +55,8 @@ export const LogOutBtn = styled.button`
 export const AlbumListWrapper = styled.div`
   width:100%;
   max-width: 1200px;
-  height: 800px;
+  /* height: 800px; */
+  border-bottom: 1px solid #BDBDBD;
 `
 export const Wrapper = styled.div`
 display: flex;
@@ -85,4 +86,45 @@ display: flex;
   position: relative;
   top:2px;
 }
+`
+export const PaginationWrapper = styled.div`
+width: 1200px;
+display:flex;
+align-items: center;
+justify-content: space-evenly;
+margin-top: 30px;
+`
+export const PrevPage = styled.div`
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  text-align: center;
+  margin:0;
+  line-height: 30px;
+  `
+export const PageLi = styled.div`
+  /* padding:10px;   */
+  text-align: center;
+  
+`
+export const PageSpan = styled.div`
+font-size: 15px;
+cursor: pointer;
+width: 30px;
+height: 30px;
+text-align: center;
+line-height: 30px;
+:hover {
+  background-color: #BDBDBD;
+  border-radius: 50px;
+  text-align: center;
+}
+  `
+export const NextPage = styled.div`
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  text-align: center;
+  margin:0;
+  line-height: 30px;
 `

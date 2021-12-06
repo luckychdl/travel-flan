@@ -1,4 +1,5 @@
 import { Spin } from "antd"
+import { useState } from "react"
 import {
   Loading,
   Title,
@@ -9,10 +10,22 @@ import {
   Wrapper,
   AlbumNumber,
   AlbumTitle,Image,
-  DataWrapper
+  DataWrapper,
+  PaginationWrapper,
+  PrevPage,
+  PageLi,
+  PageSpan,
+  NextPage
 } from "./albums.styles"
+
+
 const AlbumsUI = (props) => {
-console.log(props.data,"asd")
+  const [isActive , setIsActive] = useState([])
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(props.totalData / props.perPage); i ++) {
+      pageNumbers.push(i);
+    }
+    
   return (
     <>
     <Title>TRAVEL FLAN</Title>
@@ -33,8 +46,16 @@ console.log(props.data,"asd")
       </DataWrapper>
       )}
       )}
-
       </AlbumListWrapper>
+      <PaginationWrapper>
+        <PrevPage onClick={props.onClickPrevPage}>{'<'}</PrevPage>
+          {pageNumbers.map((number) => (
+            <PageLi key={number}>
+              <PageSpan onClick={()=> props.paginate(number)} >{number}</PageSpan>
+            </PageLi>
+          ))}
+        <NextPage onClick={props.onClickNextPage}>{'>'}</NextPage>
+      </PaginationWrapper>
       {props.isLoading && 
       <Loading>
         <Spin />
