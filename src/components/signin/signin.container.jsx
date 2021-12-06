@@ -1,18 +1,21 @@
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import {UserInfoContext} from "../../App"
 import SignInUI from "./signin.presenter"
-
+import {useNavigate} from "react-router-dom"
 const USER_INFO = {
   email : "",
   password: ""
 }
-const SignIn = ({history}) => {
+const SignIn = () => {
   const [autoSignIn, setAutoSignIn] = useState(false)
   const [userInfo, setUserInfo] = useState(USER_INFO)
-
+  const {email, password} = useContext(UserInfoContext)
+  const autoSign = localStorage.getItem("autoSign")
+const navigate = useNavigate()
   const onClickAutoSignIn = () => {
     setAutoSignIn(prev => !prev)
   }
-  console.log(userInfo)
+  
   const onChangeSignIn = (e) => {
     const newInfo = {...userInfo, [e.target.name] : e.target.value }
     setUserInfo(newInfo)
@@ -31,11 +34,22 @@ const SignIn = ({history}) => {
       alert("비밀번호를 입력해주세요.")
       return
     }
-    else {
+    if ( email === "travel@naver.com" && password === "1234") {
+      localStorage.setItem("token", "true")
       alert("로그인성공")
+      navigate("/albums")
+      if( autoSignIn ) {
+        localStorage.setItem("autoSign", "true")
+      }
     }
   }
-  return <SignInUI onClickAutoSignIn={onClickAutoSignIn} onClickSignIn={onClickSignIn} onChangeSignIn={onChangeSignIn}/>
+  useEffect(()=> {
+    if (localStorage.getItem("autoSign")) {
+      navigate("/albums")
+    }
+  },[])
+  
+  return <SignInUI autoSignIn={autoSignIn} onClickAutoSignIn={onClickAutoSignIn} onClickSignIn={onClickSignIn} onChangeSignIn={onChangeSignIn}/>
 }
 
 export default SignIn

@@ -1,10 +1,15 @@
+import { useNavigate } from "react-router"
 import {
   MainWrapper,SubWrapper,Title,InputUserInfo,AutoSignIn,BtnWrapper,SignInBtn,SignUpBtn,Wrapper
 } from "./signin.styles"
 
 const SignInUI = (props) => {
+  const navigate = useNavigate()
+  const autoSign = localStorage.getItem("autoSign")
   return (
+    
     <MainWrapper>
+      {autoSign && navigate("/albums")}
       <SubWrapper>
         <Title>TRAVEL FLAN</Title>
         <InputUserInfo placeholder="E-mail" name="email" onChange={props.onChangeSignIn}/>

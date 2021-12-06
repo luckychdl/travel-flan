@@ -2,8 +2,10 @@ import AlbumsUI from "./albums.presenter"
 
 
 const Albums = () => {
-
-  return (<AlbumsUI />)
+const onClickLogOut = () => {
+  localStorage.removeItem("autoSign")
+}
+  return (<AlbumsUI onClickLogOut={onClickLogOut}/>)
 }
 
 export default Albums

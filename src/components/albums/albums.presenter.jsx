@@ -1,7 +1,7 @@
 
 
-const AlbumsUI = () => {
+const AlbumsUI = (props) => {
 
-  return (<div></div>)
+  return (<div><button onClick={props.onClickLogOut}>Log out</button></div>)
 }
 export default AlbumsUI
