@@ -20,6 +20,7 @@ import {
   AddNewListBtn
 } from "./albums.styles"
 import { CloseCircleFilled, EditOutlined } from "@ant-design/icons"
+import AlbumEdit from "./edit/albumsEdit.container";
 
 
 const AlbumsUI = (props) => {
@@ -32,24 +33,27 @@ const AlbumsUI = (props) => {
     <Title>TRAVEL FLAN</Title>
     
     <MainWrapper>
+      {!props.isActive ?
     <NewListWrapper>
       <AddNewListInput placeholder="Enter Title" onChange={props.onChangeInput}></AddNewListInput>
       <AddNewListBtn onClick={props.onClickAddList}>ADD</AddNewListBtn>
     </NewListWrapper>
+      :
+      <AlbumEdit setIsActive={props.setIsActive}/>
+      }
     <LogOutWrapper>
         <LogOutBtn onClick={props.onClickLogOut}>Sign out</LogOutBtn>
       </LogOutWrapper>
       <AlbumListWrapper>
-      {props.data.map((el) => {
+      {props.data.map((el, idx) => {
         return (
-      <DataWrapper>
-        
-        <Wrapper key={el.id}>
-          <AlbumNumber>No.{el.id}</AlbumNumber>
+      <DataWrapper key={el.id}>
+        <Wrapper onClick={props.onClickaaa}>
+          <AlbumNumber>No. {el.id}</AlbumNumber>
           <AlbumTitle>{el.title}</AlbumTitle>
+          
         </Wrapper>
-        
-        <EditOutlined/>
+        <EditOutlined id={el.id} index={idx} onClick={() => props.onClickEdit(el.id, idx)}/>
         <CloseCircleFilled onClick={()=> props.onClickDeleteAddList(el.id)} style={{width:"50px",fontSize:"20px",cursor:"pointer"}}/>
         <Image src="http://placehold.it/200x150" />
       </DataWrapper>

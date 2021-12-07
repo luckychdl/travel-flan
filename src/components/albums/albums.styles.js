@@ -11,14 +11,14 @@ export const Loading = styled.div`
 export const Title = styled.div`
   font-size: 50px;
   font-weight: 700;
-  margin-top: 80px;
+  margin: 50px 0 50px 0;
   text-align: center;
-  height: 150px;
 `
 export const MainWrapper = styled.div`
   width : 100vw;
   /* max-width: 1200px; */
   height: 100vh;
+  /* max-height: 800px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -72,6 +72,7 @@ export const AlbumNumber = styled.div`
 `
 export const AlbumTitle = styled.div`
   font-size: 30px;
+  margin-right: 20px;
 `
 export const Image = styled.img`
   width: 200px;
@@ -84,10 +85,6 @@ border-top: 1px solid #BDBDBD;
 padding:10px 0 10px 0;
 :hover{
   background-color: #EEEEEE;
-}
-:active {
-  position: relative;
-  top:2px;
 }
 `
 export const PaginationWrapper = styled.div`
@@ -142,9 +139,9 @@ export const AddNewListInput = styled.input`
   width: 100%;
   height: 50px;
   margin: 10px;
+  padding-left: 20px;
   border: 1px solid #BDBDBD;
   ::placeholder {
-    padding: 20px;
     font-size: 16px;
   }
 `

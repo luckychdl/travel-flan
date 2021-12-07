@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import {UserInfoContext} from "../../App"
+import {GlobalContext} from "../../App"
 import SignInUI from "./signin.presenter"
 import {useNavigate} from "react-router-dom"
 const USER_INFO = {
@@ -9,9 +9,8 @@ const USER_INFO = {
 const SignIn = () => {
   const [autoSignIn, setAutoSignIn] = useState(false)
   const [userInfo, setUserInfo] = useState(USER_INFO)
-  const {email, password} = useContext(UserInfoContext)
-  const autoSign = localStorage.getItem("autoSign")
-const navigate = useNavigate()
+  const {email, password} = useContext(GlobalContext)
+  const navigate = useNavigate()
   const onClickAutoSignIn = () => {
     setAutoSignIn(prev => !prev)
   }
@@ -47,7 +46,7 @@ const navigate = useNavigate()
     if (localStorage.getItem("autoSign")) {
       navigate("/albums")
     }
-  },[])
+  },[navigate])
   
   return <SignInUI autoSignIn={autoSignIn} onClickAutoSignIn={onClickAutoSignIn} onClickSignIn={onClickSignIn} onChangeSignIn={onChangeSignIn}/>
 }
