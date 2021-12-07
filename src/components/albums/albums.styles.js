@@ -63,7 +63,7 @@ display: flex;
 width:100%;
 align-items: center;
 height: 150px;
-border-top: 1px solid #BDBDBD;
+
 
 `
 export const AlbumNumber = styled.div`
@@ -79,6 +79,9 @@ export const Image = styled.img`
 `
 export const DataWrapper = styled.div`
 display: flex;
+align-items: center;
+border-top: 1px solid #BDBDBD;
+padding:10px 0 10px 0;
 :hover{
   background-color: #EEEEEE;
 }
@@ -127,4 +130,28 @@ export const NextPage = styled.div`
   text-align: center;
   margin:0;
   line-height: 30px;
+`
+export const NewListWrapper = styled.div`
+  width: 100%;
+  max-width: 800px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+`
+export const AddNewListInput = styled.input`
+  width: 100%;
+  height: 50px;
+  margin: 10px;
+  border: 1px solid #BDBDBD;
+  ::placeholder {
+    padding: 20px;
+    font-size: 16px;
+  }
+`
+export const AddNewListBtn = styled.button`
+  width: 100px;
+  height: 56px;
+  border: 1px solid #BDBDBD;
+  background-color: #616161;
+  color:#FFFFFF
 `

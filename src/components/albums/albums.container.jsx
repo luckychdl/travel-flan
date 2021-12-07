@@ -9,17 +9,16 @@ const Albums = () => {
   const [data, setData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [perPage, setPerPage] = useState(5)
+  const [addInput, setAddInput] = useState("")
   const navigate = useNavigate()
   const onClickLogOut = () => {
     localStorage.removeItem("autoSign")
     navigate("/")
-
   }
-  
   const getData = async () => {
     try {
     const res = await axios.get("https://jsonplaceholder.typicode.com/albums")
-    setData(res.data)
+    setData(res.data.reverse())
     }
     catch{
       setIsLoading(true)
@@ -52,11 +51,29 @@ const Albums = () => {
         setCurrentPage(prev => prev-1)
       }
     }
-
+    const onChangeInput = (e) => {
+      setAddInput(e.target.value)
+    }
+    const onClickAddList = () => {
+      setData([{
+        userId: data[0].userId + 1,
+        id: data[0].id + 1,
+        title: addInput,
+      }].concat(data))
+      
+    }
+    const onClickDeleteAddList = (id) => {
+      if( window.confirm ("정말로 삭제하시겠습니까?")) {
+        setData(data.filter((el)=> el.id !== id))
+      }
+    }
   return (<AlbumsUI 
+            onClickAddList={onClickAddList}
             onClickLogOut={onClickLogOut} 
             onClickNextPage={onClickNextPage}
             onClickPrevPage={onClickPrevPage}
+            onChangeInput={onChangeInput}
+            onClickDeleteAddList={onClickDeleteAddList}
             data={currentPosts(data)}
             isLoading={isLoading} 
             perPage={perPage} 
