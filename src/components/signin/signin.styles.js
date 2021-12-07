@@ -1,5 +1,8 @@
 import styled from "styled-components"
 
+export const Dummy = styled.div`
+  margin-bottom: 10px;
+`
 export const MainWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -24,7 +27,7 @@ export const Title = styled.div`
   font-size: 40px;
   font-weight: 700;
   height: 70px;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 `
 export const InputUserInfo = styled.input`
   width: 100%;

@@ -1,17 +1,20 @@
 import { useNavigate } from "react-router"
 import {
-  MainWrapper,SubWrapper,Title,InputUserInfo,AutoSignIn,BtnWrapper,SignInBtn,SignUpBtn,Wrapper
+  MainWrapper,SubWrapper,Title,InputUserInfo,AutoSignIn,BtnWrapper,SignInBtn,SignUpBtn,Wrapper,Dummy
 } from "./signin.styles"
 
 const SignInUI = (props) => {
   const navigate = useNavigate()
   const autoSign = localStorage.getItem("autoSign")
   return (
+    <>
     
     <MainWrapper>
       {autoSign && navigate("/albums")}
       <SubWrapper>
         <Title>TRAVEL FLAN</Title>
+        <Dummy>E-mail: travel@naver.com</Dummy>
+        <Dummy>Password: 1234</Dummy>
         <InputUserInfo placeholder="E-mail" name="email" onChange={props.onChangeSignIn}/>
         <InputUserInfo placeholder="Password" name="password" type="password" onChange={props.onChangeSignIn}/>
         <Wrapper>
@@ -23,6 +26,7 @@ const SignInUI = (props) => {
         </BtnWrapper>
       </SubWrapper>
     </MainWrapper>
+    </>
   )
 }
 
