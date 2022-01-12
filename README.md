@@ -11,7 +11,6 @@ yarn start
 ```
 travel@naver.com
 ```
-
 ## Dummy Password
 ```
 1234
